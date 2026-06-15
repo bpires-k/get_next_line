@@ -12,10 +12,10 @@
 
 #include "get_next_line.h"
 
-char	*save_line(int fd, char *str)
+int	*save_line(int fd, char *str)
 {
 	char	*buffer;
-	int		bytes_read;
+	int		chars_read;
 
 	buffer = (char *) malloc(BUFFER_SIZE);
 	bytes_read = 1;
@@ -37,7 +37,7 @@ char	*get_next_line(int fd)
 	chars_read = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = save_line(fd, line);
+	chars_read += save_line(fd, line);
 	if (!line)
 		return (NULL);
 	return (line);
