@@ -23,7 +23,9 @@ typedef struct s_list
 }			t_list;
 
 char	*get_next_line(int fd);
-int		save_line(int fd, char *str);
+char	*save_line(int fd, t_list *str);
 char	*ft_strchr(const char *s, int c);
+t_list	*ft_lstnew(void *content);
+
 
 #endif
