@@ -25,7 +25,7 @@ char	*save_line(int fd, char *full_line)
 	{
 		chars_read = read(fd, buffer, BUFFER_SIZE);
 		if (chars_read == -1)
-			return (free(buffer), NULL);
+			return (free(full_line), free(buffer), NULL);
 		buffer[chars_read] = '\0';
 		full_line = ft_strjoin(full_line, buffer);
 	}

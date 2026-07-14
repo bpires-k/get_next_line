@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bpires-k <bpires-k@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -47,7 +47,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*ns;
 	size_t	i;
 	size_t	j;
-	
+
 	if (!s1)
 	{
 		s1 = malloc(1);

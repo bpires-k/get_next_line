@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bpires-k <bpires-k@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -25,7 +25,7 @@ char	*save_line(int fd, char *full_line)
 	{
 		chars_read = read(fd, buffer, BUFFER_SIZE);
 		if (chars_read == -1)
-			return (free(buffer), NULL);
+			return (free(full_line), free(buffer), NULL);
 		buffer[chars_read] = '\0';
 		full_line = ft_strjoin(full_line, buffer);
 	}
@@ -45,12 +45,14 @@ char	*get_next_line(int fd)
 	if (!fline[fd] || *fline[fd] == '\0')
 		return (free(fline[fd]), fline[fd] = NULL, NULL);
 	if (ft_strchr(fline[fd], '\n'))
-		nline = ft_substr(fline[fd], 0, ft_strchr(fline[fd], '\n') - fline[fd] + 1);
+		nline = ft_substr(fline[fd], 0, ft_strchr(fline[fd], '\n')
+				- fline[fd] + 1);
 	else
 		nline = ft_substr(fline[fd], 0, ft_strchr(fline[fd], '\0') - fline[fd]);
 	temp = fline[fd];
 	if (ft_strchr(fline[fd], '\n') && *(ft_strchr(fline[fd], '\n') + 1))
-		fline[fd] = ft_substr(fline[fd], ft_strchr(fline[fd], '\n') - fline[fd] + 1,
+		fline[fd] = ft_substr(fline[fd], ft_strchr(fline[fd], '\n')
+				- fline[fd] + 1,
 				ft_strchr(fline[fd], '\0') - ft_strchr(fline[fd], '\n'));
 	else
 		fline[fd] = NULL;
